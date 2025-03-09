@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クイズ選択</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>クイズの難易度を選んでください</h2>
+        <button onclick="selectLevel(1)">レベル1</button>
+        <button onclick="selectLevel(2)">レベル2</button>
+        <button onclick="selectLevel(3)">レベル3</button>
+        <button onclick="selectLevel(4)">レベル4</button>
+        <button onclick="selectLevel(5)">レベル5</button>
+    </div>
+
+    <script>
+        function selectLevel(level) {
+            let params = new URLSearchParams(window.location.search);
+            let group = params.get("group");
+            let antigen = params.get("antigen");
+            location.href = `quiz.html?level=${level}&group=${group}&antigen=${antigen}`;
+        }
+    </script>
+</body>
+</html>
