@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>的の数入力</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>的を倒した数を入力してください</h2>
+        <input type="number" id="targetCount" min="0">
+        <button onclick="calculateScore()">スコアを確認</button>
+    </div>
+
+    <script>
+        function calculateScore() {
+            let targets = document.getElementById("targetCount").value;
+            location.href = `score.html?targets=${targets}`;
+        }
+    </script>
+</body>
+</html>
