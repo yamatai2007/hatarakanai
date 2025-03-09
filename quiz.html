@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クイズ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2 id="questionText"></h2>
+        <div id="choices"></div>
+        <button id="confirmAnswer" style="display:none;">この回答でOK?</button>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const level = urlParams.get("level");
+        const questions = {
+            "1": { 
+                question: "赤血球はどれ？",
+                choices: ["赤血球.jpg", "消防車.jpg", "トマト.jpeg"],
+                answer: "赤血球.jpg"
+            },
+            "2": { 
+                question: "細菌を倒すのはどれ？",
+                choices: ["自衛隊.jpeg", "血小板.png", "白血球.png"],
+                answer: "白血球.png"
+            }
+        };
+
+        let selectedChoice = null;
+        let questionData = questions[level];
+
+        document.getElementById("questionText").innerText = questionData.question;
+
+        questionData.choices.forEach(choice => {
+            let btn = document.createElement("button");
+            btn.classList.add("choice-btn");
+            btn.innerText = choice;
+            btn.dataset.choice = choice;
+            btn.addEventListener("click", function() {
+                document.querySelectorAll(".choice-btn").forEach(b => b.style.border = "1px solid black");
+                this.style.border = "3px solid blue";
+                selectedChoice = this.dataset.choice;
+                document.getElementById("confirmAnswer").style.display = "block";
+            });
+            document.getElementById("choices").appendChild(btn);
+        });
+
+        document.getElementById("confirmAnswer").addEventListener("click", function() {
+            if (selectedChoice === questionData.answer) {
+                alert("正解！");
+            } else {
+                alert("不正解...");
+            }
+        });
+    </script>
+</body>
+</html>
