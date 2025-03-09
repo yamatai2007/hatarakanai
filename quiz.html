@@ -10,22 +10,18 @@
     <div class="container">
         <h2 id="questionText"></h2>
         <div id="choices"></div>
-        <button id="confirmAnswer" style="display:none;">この回答でOK?</button>
+        <button id="confirmAnswer" style="display:none;" onclick="confirmAnswer()">この回答でOK?</button>
     </div>
 
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const level = urlParams.get("level");
+        const params = new URLSearchParams(window.location.search);
+        const level = params.get("level");
+
         const questions = {
             "1": { 
                 question: "赤血球はどれ？",
                 choices: ["赤血球.jpg", "消防車.jpg", "トマト.jpeg"],
                 answer: "赤血球.jpg"
-            },
-            "2": { 
-                question: "細菌を倒すのはどれ？",
-                choices: ["自衛隊.jpeg", "血小板.png", "白血球.png"],
-                answer: "白血球.png"
             }
         };
 
@@ -48,13 +44,14 @@
             document.getElementById("choices").appendChild(btn);
         });
 
-        document.getElementById("confirmAnswer").addEventListener("click", function() {
+        function confirmAnswer() {
             if (selectedChoice === questionData.answer) {
                 alert("正解！");
             } else {
                 alert("不正解...");
             }
-        });
+            location.href = "score_input.html";
+        }
     </script>
 </body>
 </html>
