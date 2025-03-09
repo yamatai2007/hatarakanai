@@ -31,16 +31,3 @@ button {
 button:hover {
     background-color: #ccc;
 }
-
-.choice-btn {
-    border: 1px solid black;
-    padding: 10px;
-    display: block;
-    width: 80%;
-    margin: 10px auto;
-    cursor: pointer;
-}
-
-.choice-btn:hover {
-    background-color: #eee;
-}
