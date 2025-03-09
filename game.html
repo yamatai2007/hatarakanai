@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゲーム開始</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>グループ名を入力してください</h2>
+        <input type="text" id="groupName" placeholder="グループ名">
+        
+        <h2>抗原を捕獲した数を入力してください</h2>
+        <input type="number" id="antigenCount" min="0">
+        
+        <h2>クイズの難易度を選んでください</h2>
+        <button class="level-btn" data-level="1">レベル1</button>
+        <button class="level-btn" data-level="2">レベル2</button>
+        <button class="level-btn" data-level="3">レベル3</button>
+        <button class="level-btn" data-level="4">レベル4</button>
+        <button class="level-btn" data-level="5">レベル5</button>
+    </div>
+
+    <script>
+        document.querySelectorAll(".level-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                let level = this.dataset.level;
+                let groupName = document.getElementById("groupName").value;
+                let antigenCount = document.getElementById("antigenCount").value;
+                window.location.href = `quiz.html?level=${level}&group=${groupName}&antigen=${antigenCount}`;
+            });
+        });
+    </script>
+</body>
+</html>
